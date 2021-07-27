@@ -522,7 +522,7 @@ a {
 .section-home {
     height: 100vh;
     position: relative;
-    background-image: url("../images/slider3.jpg");
+    background-image: url("../images/cover.png");
     background-size: cover;
     background-position: center;
 }
@@ -1078,27 +1078,27 @@ a {
 }
 
 .services-list-1 {
-    background-image: url("../images/services1.jpg");
+    background-image: url("../images/blob.png");
 }
 
 .services-list-2 {
-    background-image: url("../images/services2.jpg");
+    background-image: url("../images/microsoft.png");
 }
 
 .services-list-3 {
-    background-image: url("../images/services3.jpg");
+    background-image: url("../images/ibm.png");
 }
 
 .services-list-4 {
-    background-image: url("../images/services4.jpg");
+    background-image: url("../images/aws.png");
 }
 
 .services-list-5 {
-    background-image: url("../images/services5.jpg");
+    background-image: url("../images/hootsuite1.png");
 }
 
 .services-list-6 {
-    background-image: url("../images/services6.jpg");
+    background-image: url("../images/pearson.png");
 }
 
 
