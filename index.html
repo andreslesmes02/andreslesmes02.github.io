@@ -860,27 +860,33 @@ Andres is currently working towards his Masters in Information Technology and Ma
 		</div>
 		
 		<script>
-			function toggleChat() {
-				document.getElementById("chatbot").classList.toggle("open");
-			}
-			
-			function handleKeyPress(event) {
-				if (event.key === "Enter") {
-					let input = document.getElementById("chat-input");
-					let message = input.value.trim();
-					if (message !== "") {
-						let chatBody = document.getElementById("chat-body");
-						chatBody.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-						input.value = "";
-						
-						setTimeout(() => {
-							chatBody.innerHTML += `<p><strong>Bot:</strong> I'm just a simple chatbot!</p>`;
-							chatBody.scrollTop = chatBody.scrollHeight;
-						}, 500);
+			document.addEventListener("DOMContentLoaded", function () {
+				const chatBtn = document.querySelector(".chatbot-btn");
+				const chatContainer = document.getElementById("chatbot");
+		
+				chatBtn.addEventListener("click", function () {
+					chatContainer.classList.toggle("open");
+				});
+		
+				document.getElementById("chat-input").addEventListener("keypress", function (event) {
+					if (event.key === "Enter") {
+						let input = event.target;
+						let message = input.value.trim();
+						if (message !== "") {
+							let chatBody = document.getElementById("chat-body");
+							chatBody.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+							input.value = "";
+		
+							setTimeout(() => {
+								chatBody.innerHTML += `<p><strong>Bot:</strong> I'm just a simple chatbot!</p>`;
+								chatBody.scrollTop = chatBody.scrollHeight;
+							}, 500);
+						}
 					}
-				}
-			}
+				});
+			});
 		</script>
+		
 	</body>	
 </body>
 </html>
