@@ -18,11 +18,11 @@ function sendMessage() {
     botResponse.classList.add("bot-message");
 
     if (userInput.includes("projects")) {
-        botResponse.textContent = "You can check out my projects here: [Your Projects Page Link]";
+        botResponse.textContent = "You can check out my projects here: [https://andreslesmes02.github.io]";
     } else if (userInput.includes("about")) {
-        botResponse.textContent = "Learn more about me on my About page: [Your About Page Link]";
+        botResponse.textContent = "Learn more about me on my About page: [https://andreslesmes02.github.io]";
     } else if (userInput.includes("contact")) {
-        botResponse.textContent = "You can contact me here: [Your Contact Page Link]";
+        botResponse.textContent = "You can contact me here: [https://andreslesmes02.github.io]";
     } else {
         botResponse.textContent = "I'm not sure how to help with that. Try asking about projects, about me, or contact info!";
     }
