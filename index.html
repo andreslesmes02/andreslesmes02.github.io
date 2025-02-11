@@ -784,22 +784,28 @@ Andres is currently working towards his Masters in Information Technology and Ma
 	
 	<!-- Custom Js -->
 	<script src="assets/js/custom.js"></script>
-	<!-- Chatbot Container -->
-<div class="chatbot">
-    <div class="chat-header" onclick="toggleChat()">
-        💬 Chat with me
-    </div>
-    <div class="chat-box" id="chat-box">
-        <p class="bot-message">Hello! I'm your portfolio guide. How can I help?</p>
-    </div>
-    <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Type your question...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
+	<!-- Link the JavaScript file -->
+	<script src="chatbot.js"></script>
 
-<!-- Link the JavaScript file -->
-<script src="chatbot.js"></script>
+	<script>
+		window.addEventListener('load', function() {
+			const chatbotContainer = document.createElement('div');
+			chatbotContainer.className = 'chatbot';
+			chatbotContainer.innerHTML = `
+				<div class="chat-header" id="chat-header">
+					💬 Chat with me
+				</div>
+				<div class="chat-box" id="chat-box">
+					<p class="bot-message">Hello! I'm your portfolio guide. How can I help?</p>
+				</div>
+				<div class="chat-input">
+					<input type="text" id="user-input" placeholder="Type your question...">
+					<button onclick="sendMessage()">Send</button>
+				</div>
+			`;
+			document.body.appendChild(chatbotContainer);
+		});
+	</script>
 
 </body>
 </html>
