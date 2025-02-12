@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatInput = document.getElementById("chatbot-input");
     const chatBody = document.getElementById("chatbot-body");
 
+    if (!chatbotBtn || !chatbot || !closeChat || !chatInput || !chatBody) {
+        console.error("One or more chatbot elements are missing!");
+        return;
+    }
+
     // Show/Hide Chatbot
     chatbotBtn.addEventListener("click", function () {
         chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
@@ -30,4 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    console.log("Chatbot script loaded successfully!");
 });
