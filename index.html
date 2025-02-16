@@ -784,7 +784,68 @@ Andres is currently working towards his Masters in Information Technology and Ma
 	<!-- Custom Js -->
 	<script src="assets/js/custom.js"></script>
 	<!-- Link the JavaScript file -->
+		// Create chatbot button
+		onst chatbotButton = document.createElement('button');
+		chatbotButton.innerText = 'Chat';
+		chatbotButton.style.position = 'fixed';
+		chatbotButton.style.bottom = '20px';
+		chatbotButton.style.right = '20px';
+		chatbotButton.style.background = '#FFD700';
+		chatbotButton.style.border = 'none';
+		chatbotButton.style.padding = '10px 15px';
+		chatbotButton.style.borderRadius = '20px';
+		chatbotButton.style.cursor = 'pointer';
+		document.body.appendChild(chatbotButton);
 
+		// Create chatbot container
+		const chatbotContainer = document.createElement('div');
+		chatbotContainer.style.position = 'fixed';
+		chatbotContainer.style.bottom = '70px';
+		chatbotContainer.style.right = '20px';
+		chatbotContainer.style.width = '250px';
+		chatbotContainer.style.height = '300px';
+		chatbotContainer.style.background = 'white';
+		chatbotContainer.style.border = '1px solid #ccc';
+		chatbotContainer.style.borderRadius = '10px';
+		chatbotContainer.style.padding = '10px';
+		chatbotContainer.style.display = 'none';
+		document.body.appendChild(chatbotContainer);
+
+		// Chat display area
+		const chatDisplay = document.createElement('div');
+		chatDisplay.style.height = '80%';
+		chatDisplay.style.overflowY = 'auto';
+		chatDisplay.style.padding = '5px';
+		chatbotContainer.appendChild(chatDisplay);
+
+		// Input area
+		const input = document.createElement('input');
+		input.type = 'text';
+		input.placeholder = 'Type a message...';
+		input.style.width = '75%';
+		chatbotContainer.appendChild(input);
+
+		const sendButton = document.createElement('button');
+		sendButton.innerText = 'Send';
+		sendButton.style.width = '20%';
+		chatbotContainer.appendChild(sendButton);
+
+		// Toggle chatbot visibility
+		chatbotButton.addEventListener('click', () => {
+			chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+		});
+
+		// Simple chatbot response
+		sendButton.addEventListener('click', () => {
+			const userMessage = input.value;
+			if (userMessage.trim() === '') return;
+			chatDisplay.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+			setTimeout(() => {
+				chatDisplay.innerHTML += `<p><strong>Bot:</strong> Hello! How can I assist you?</p>`;
+				chatDisplay.scrollTop = chatDisplay.scrollHeight;
+			}, 500);
+			input.value = '';
+		});
 
 </body>
 </html>
