@@ -784,68 +784,111 @@ Andres is currently working towards his Masters in Information Technology and Ma
 	<!-- Custom Js -->
 	<script src="assets/js/custom.js"></script>
 	<!-- Link the JavaScript file -->
-		// Create chatbot button
-		onst chatbotButton = document.createElement('button');
-		chatbotButton.innerText = 'Chat';
-		chatbotButton.style.position = 'fixed';
-		chatbotButton.style.bottom = '20px';
-		chatbotButton.style.right = '20px';
-		chatbotButton.style.background = '#FFD700';
-		chatbotButton.style.border = 'none';
-		chatbotButton.style.padding = '10px 15px';
-		chatbotButton.style.borderRadius = '20px';
-		chatbotButton.style.cursor = 'pointer';
-		document.body.appendChild(chatbotButton);
-
-		// Create chatbot container
-		const chatbotContainer = document.createElement('div');
-		chatbotContainer.style.position = 'fixed';
-		chatbotContainer.style.bottom = '70px';
-		chatbotContainer.style.right = '20px';
-		chatbotContainer.style.width = '250px';
-		chatbotContainer.style.height = '300px';
-		chatbotContainer.style.background = 'white';
-		chatbotContainer.style.border = '1px solid #ccc';
-		chatbotContainer.style.borderRadius = '10px';
-		chatbotContainer.style.padding = '10px';
-		chatbotContainer.style.display = 'none';
-		document.body.appendChild(chatbotContainer);
-
-		// Chat display area
-		const chatDisplay = document.createElement('div');
-		chatDisplay.style.height = '80%';
-		chatDisplay.style.overflowY = 'auto';
-		chatDisplay.style.padding = '5px';
-		chatbotContainer.appendChild(chatDisplay);
-
-		// Input area
-		const input = document.createElement('input');
-		input.type = 'text';
-		input.placeholder = 'Type a message...';
-		input.style.width = '75%';
-		chatbotContainer.appendChild(input);
-
-		const sendButton = document.createElement('button');
-		sendButton.innerText = 'Send';
-		sendButton.style.width = '20%';
-		chatbotContainer.appendChild(sendButton);
-
-		// Toggle chatbot visibility
-		chatbotButton.addEventListener('click', () => {
-			chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
-		});
-
-		// Simple chatbot response
-		sendButton.addEventListener('click', () => {
-			const userMessage = input.value;
-			if (userMessage.trim() === '') return;
-			chatDisplay.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
-			setTimeout(() => {
-				chatDisplay.innerHTML += `<p><strong>Bot:</strong> Hello! How can I assist you?</p>`;
-				chatDisplay.scrollTop = chatDisplay.scrollHeight;
-			}, 500);
-			input.value = '';
-		});
-
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chatbot</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+			.chatbot-container {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				width: 300px;
+				background: #f1f1f1;
+				border-radius: 10px;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+				display: none;
+			}
+			.chat-header {
+				background: #007bff;
+				color: white;
+				padding: 10px;
+				text-align: center;
+				cursor: pointer;
+			}
+			.chat-body {
+				height: 300px;
+				overflow-y: auto;
+				padding: 10px;
+			}
+			.chat-footer {
+				display: flex;
+				padding: 10px;
+				background: #eee;
+			}
+			.chat-footer input {
+				flex: 1;
+				padding: 5px;
+			}
+			.chat-footer button {
+				background: #007bff;
+				color: white;
+				border: none;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+			.chat-toggle {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background: #007bff;
+				color: white;
+				padding: 10px;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="chat-toggle" onclick="toggleChatbot()">💬</div>
+		<div class="chatbot-container" id="chatbot">
+			<div class="chat-header" onclick="toggleChatbot()">Chat with me!</div>
+			<div class="chat-body" id="chat-body"></div>
+			<div class="chat-footer">
+				<input type="text" id="chat-input" placeholder="Type a message...">
+				<button onclick="sendMessage()">Send</button>
+			</div>
+		</div>
+	
+		<script>
+			function toggleChatbot() {
+				const chatbot = document.getElementById('chatbot');
+				chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
+			}
+	
+			function sendMessage() {
+				const input = document.getElementById('chat-input');
+				const message = input.value.trim();
+				if (message === '') return;
+	
+				const chatBody = document.getElementById('chat-body');
+				chatBody.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+				input.value = '';
+	
+				setTimeout(() => {
+					const botResponse = getBotResponse(message);
+					chatBody.innerHTML += `<div><strong>Bot:</strong> ${botResponse}</div>`;
+					chatBody.scrollTop = chatBody.scrollHeight;
+				}, 500);
+			}
+	
+			function getBotResponse(message) {
+				const responses = {
+					"hello": "Hi there! How can I help you?",
+					"who are you": "I'm a chatbot for this portfolio website.",
+					"what can you do": "I can provide information about Andres Lesmes' work and projects!",
+				};
+				return responses[message.toLowerCase()] || "I'm not sure how to respond to that.";
+			}
+		</script>
+	</body>
+	</html>
+			
 </body>
 </html>
